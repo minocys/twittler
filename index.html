@@ -3,10 +3,35 @@
   <head>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <link rel="stylesheet" href="/css/twittler.css">
+    <meta charset='utf-8'>
   </head>
   <body>
-    <script>
+    <!-- top menu bar - twit or twat? -->
+    <div class='wrap'>
+      <div id="menu">
+        <a href="#" id="twit"></a>
+        <a href="#" id="twat"></a>
+      </div>
 
+      <!-- display for twits -->
+      <section id="content">
+        <div class="input">
+
+        </div>
+        <div class="tweets">
+
+        </div>
+      </section>
+
+      <!-- display for twats -->
+      <section id="fweinds">
+        <div class="user"></div>
+        <div class="user-posts"></div>
+      </section>
+    </div>
+
+    <script>
       $(document).ready(function(){
         var $body = $('body');
         $body.html('');
@@ -18,7 +43,7 @@
           while(i !== index){
             var tweet = streams.home.splice(0, 1)[0];
             //console.log(tweet);
-            var $tweet = $('<div></div>');
+            var $tweet = $('<div id="tweets"></div>');
             $tweet.text('@' + tweet.user + ': ' + tweet.message + " - posted at:" + tweet.created_at + "index: " + i);
             $tweet.prependTo($body);
             i++;
