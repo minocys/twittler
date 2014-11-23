@@ -3,61 +3,28 @@
   <head>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
-    <link rel="stylesheet" href="/css/twittler.css">
-    <meta charset='utf-8'>
+    <link rel="stylesheet" href="twittler.css">
   </head>
   <body>
-    <!-- top menu bar - twit or twat? -->
     <div class='wrap'>
-      <div id="menu">
-        <a href="#" id="twit"></a>
-        <a href="#" id="twat"></a>
+      <div id="title">
+        <h1>Twittler</h1>
+        <a href="#" id="twat">Friends</a>
       </div>
 
-      <!-- display for twits -->
-      <section id="content">
-        <div class="input">
-
-        </div>
-        <div class="tweets">
-
-        </div>
-      </section>
+      <!-- for input, to be added-->
+      <div class="input"></div>
 
       <!-- display for twats -->
       <section id="fweinds">
-        <div class="user"></div>
-        <div class="user-posts"></div>
+        <div class="all">@All</div>
       </section>
+
+      <!-- display for twits -->
+      <section id="content"></section>
+      
     </div>
 
-    <script>
-      $(document).ready(function(){
-        var $body = $('body');
-        $body.html('');
-
-        //newPosts will prepend new posts to DOM
-        //ensures new posts appear at the top of list
-        var newPosts = function(){
-          var index = streams.home.length-1, i = 0;
-          while(i !== index){
-            var tweet = streams.home.splice(0, 1)[0];
-            //console.log(tweet);
-            var $tweet = $('<div id="tweets"></div>');
-            $tweet.text('@' + tweet.user + ': ' + tweet.message + " - posted at:" + tweet.created_at + "index: " + i);
-            $tweet.prependTo($body);
-            i++;
-          }
-        }
-        newPosts();
-
-        //using setInterval to check for new posts every 2 seconds
-        //note: changed scheduleNextTweet to create a new post roughly every 15 seconds,
-        //      too quick at 1.5 seconds, flooded page with too many new posts.
-        window.setInterval(newPosts, 2000);
-
-      });
-
-    </script>
+    <script src="application.js"></script>
   </body>
 </html>
