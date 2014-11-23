@@ -11,14 +11,25 @@
         var $body = $('body');
         $body.html('');
 
-        var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
-          index -= 1;
+        //newPosts will prepend new posts to DOM
+        //ensures new posts appear at the top of list
+        var newPosts = function(){
+          var index = streams.home.length-1, i = 0;
+          while(i !== index){
+            var tweet = streams.home.splice(0, 1)[0];
+            //console.log(tweet);
+            var $tweet = $('<div></div>');
+            $tweet.text('@' + tweet.user + ': ' + tweet.message + " - posted at:" + tweet.created_at + "index: " + i);
+            $tweet.prependTo($body);
+            i++;
+          }
         }
+        newPosts();
+
+        //using setInterval to check for new posts every 2 seconds
+        //note: changed scheduleNextTweet to create a new post roughly every 15 seconds,
+        //      too quick at 1.5 seconds, flooded page with too many new posts.
+        window.setInterval(newPosts, 2000);
 
       });
 
