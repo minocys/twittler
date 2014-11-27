@@ -1,68 +1,92 @@
+//breakpoint variables
+$small: 683px;
+
 body{
-  font-family:verdana;
-  background-color: #3E7315;
-  color: #8CC064;
+	font-family:verdana;
+	background-color: #3E7315;
+	color: #8CC064;
 }
 
 a:link{
-  color: white;
+	color: white;
 }
 a:visited{
-  color:white;
+	color:white;
 }
 
 .wrap{
-  max-width: 1280px;
-  margin:auto;
-  padding: 5%;
+	max-width: 1280px;
+	margin:auto;
+	padding: 5%;
 }
 
 #title{
-  width:90%;
-  margin:auto;
-  text-align:right;
-  h1{
-
-  }
-  #twat{
-  }
+	width:98%;
+	margin:auto;
+	overflow:hidden;
+	padding-bottom:5px;
+	h1{
+		width:100%;
+		text-align:right;
+		margin-bottom: 10px;
+	}
+	.input{
+		width:50%;
+		display:inline-block;
+		float:left;
+		margin-bottom:5px;
+		div{
+			display: inline-block;
+		}
+	}
+	#filters{
+		width:50%;
+		display: inline-block;
+		float:right;
+		text-align: right;
+	}
+	@media only screen and (max-width : $small){
+		h1{
+			text-align: center;
+		}
+		.input{
+			width:100%;
+			text-align: center;
+		}
+		#filters{
+			width:100%;
+			text-align: center;
+		}
+	}
 }
 
-.input{
-
-}
 
 #content{
-  background-color: #245002;
+	background-color: #245002;
+	border-radius:10px;
+	margin:auto;
+	padding: 10px;
 
-  width:100%;
-  margin:auto;
-  padding: 10px;
+	.tweets{
+		width:90%;
+		border: solid 2px #5F9834;
+		border-radius: 10px;
+		margin: 10px auto 10px auto;
+		padding:5px;
+		overflow: hidden;
+		span{
+			float:right;
+		}
 
-  .tweets{
-    width:90%;
-    border: solid 1px #5F9834;
-    margin: 10px auto 10px auto;
-    padding:5px;
-    overflow: hidden;
-    span{
-      float:right;
-    }
-
-  }
+	}
 }
 
 #fweinds{
-  @extend #content;
-  display:none;
-  .user{
-    padding:10px;
+	@extend #content;
+	border: solid 2px #5F9834;
+	display:none;
+	.user{
+		padding:10px;
 
-  }
-  .all{
-    @extend .user;
-  }
-  .user-posts{
-
-  }
+	}
 }

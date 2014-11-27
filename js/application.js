@@ -4,6 +4,17 @@ $(document).ready(function(){
   var $fweindslist = $('#fweinds');
   var filter;
   //$body.html('');
+  
+  var setName = function(){
+    var name;
+    while (name == null || name == ''){
+      name = window.prompt("Please enter a user name", "Guest");
+    }
+    setVisitor(name);
+    $('#username').text('@'+ name +" : ");
+  }
+  setName();
+  
 
   var populateUsers = function(){
     for(var key in streams.users){
@@ -39,22 +50,52 @@ $(document).ready(function(){
   window.setInterval(newPosts, 20000);
 
   //event handlers
+  //display user twits only
+  $('#filter-user').on('click', function(){
+    event.preventDefault();
+    filter = getVisitor();
+    if(filter.length > 1){
+      $content.children().hide();
+      $content.children('[data-name="'+ filter + '"]').show();
+    } else {
+      alert('No twits found!');
+    }
+  });
+
+  //show user list - filter button
   $('#filter').on('click', function(){
     event.preventDefault();
     $fweindslist.slideToggle();
   });
 
-  $('.all').on('click', function(){
+  //filter all
+  $('#all').on('click', function(){
     event.preventDefault();
+    if($fweindslist.is(':visible')){
+      $fweindslist.slideToggle();
+    }
     filter = null;
     $content.children().show();
   });
 
+  //filter by user
   $('.user').on('click', function(){
     event.preventDefault();
     filter = $(this).text();
     $content.children().hide();
     $content.children('[data-name="'+ filter + '"]').show();
+  });
+
+  //new twit!
+  $('.input').submit(function(){
+    event.preventDefault();
+    var newtwit = $('#twit').val();
+    if(newtwit == null || newtwit == ''){
+      alert('Please enter a twit');
+    } else {
+      writeTweet(newtwit);
+      newPosts();
+    }
   });
 
 });

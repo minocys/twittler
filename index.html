@@ -1,23 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="jquery.js"></script>
-    <script src="data_generator.js"></script>
-    <link rel="stylesheet" href="twittler.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/data_generator.js"></script>
+    <link rel="stylesheet" href="css/twittler.css">
   </head>
   <body>
     <div class='wrap'>
       <div id="title">
         <h1>Twittler</h1>
-        <a href="#" id="twat">Friends</a>
+        <form class='input'>
+          <div id ='username'></div>
+          <input type='text' id='twit'>
+          <input type='submit' value='tweet'>
+        </form>
+        <div id='filters'>
+          Filter:
+          <a href="#" id="all">All Twits</a>
+          |
+          <a href="#" id="filter-user">My Twits</a>
+          |
+          <a href="#" id="filter">Friends</a>
+        </div>
       </div>
-
-      <!-- for input, to be added-->
-      <div class="input"></div>
 
       <!-- display for twats -->
       <section id="fweinds">
-        <div class="all">@All</div>
+        
       </section>
 
       <!-- display for twits -->
@@ -25,6 +34,6 @@
       
     </div>
 
-    <script src="application.js"></script>
+    <script src="js/application.js"></script>
   </body>
 </html>

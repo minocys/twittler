@@ -1,0 +1,65 @@
+body{
+  font-family:verdana;
+  background-color: #3E7315;
+  color: #8CC064;
+}
+
+a:link{
+  color: white;
+}
+a:visited{
+  color:white;
+}
+
+.wrap{
+  max-width: 1280px;
+  margin:auto;
+  padding: 5%;
+}
+
+#title{
+  width:90%;
+  margin:auto;
+  text-align:right;
+  h1{
+
+  }
+  #twat{
+  }
+}
+
+.input{
+
+}
+
+#content{
+  background-color: #245002;
+
+  width:100%;
+  margin:auto;
+  padding: 10px;
+
+  .tweets{
+    width:90%;
+    border: solid 1px #5F9834;
+    margin: 10px auto 10px auto;
+    padding:5px;
+    overflow: hidden;
+    span{
+      float:right;
+    }
+
+  }
+}
+
+#fweinds{
+  @extend #content;
+  display:none;
+  .user{
+    padding:10px;
+
+  }
+  .all{
+    @extend .user;
+  }
+}
